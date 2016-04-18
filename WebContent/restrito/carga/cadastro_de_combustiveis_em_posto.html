@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro de Combustíveis em Postos</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+			
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}			
+			
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>			
+		<script type="text/javascript" src="js/cadastro_de_combustiveis_em_posto.js"></script>		
+	</head>
+	<body>
+		<h1>Cadastro de Combustíveis em Posto</h1>
+		<h4>*Utilize a tecla CTRL para selecionar mais de um Combustível/ Lubrificante.</h4>
+		<fieldset>
+			<form id="frmCombustiveisLubrificantes">
+				<p>
+					<label>Equipamento Posto</label>
+					<select name="equipamentoPosto" id="listaPosto">
+						<option value="0">Selecione</option>
+					</select>
+				</p>
+				<p>		
+					<label>Combustíveis e Lubrificantes</label>
+					<select name="combustivelLubrificante" multiple style="height: 400px;" id="listaCombustiveis">
+					</select>
+				</p>
+				<!--
+				<p>
+					<label>Tipo</label>
+					<select>
+						<option value="0" selected="selected">Selecione</option>
+						<option value="M">Móvel</option>
+						<option value="F">Fixo</option>
+					</select>					
+				</p>
+				-->
+				<p>
+					<button type="button" onclick="salvar()">Salvar</button><button type="reset">Limpar</button>
+				</p>
+			</form>
+		</fieldset>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCombustiveisLubrificantes();listarPostos();listarCadastrados();</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>			
+	</body>
+</html>

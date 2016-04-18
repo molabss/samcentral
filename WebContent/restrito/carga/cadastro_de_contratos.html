@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro de Contratos</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+			
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="js/cadastro_de_contratos.js"></script>		
+	</head>
+	<body>
+		<h1>Cadastro de Contratos</h1>
+		<fieldset>
+
+			<form id="frmContrato">
+				<p>
+					<label>Número Contrato</label>
+					<input type="text" value="" name="numero" maxlength="20">
+				</p>
+				<p>
+					<label>Tipo</label>
+					<select name="tipo">
+						<option value="0" selected="selected">Selecione</option>
+						<option value="L">Locação de Equipamento</option>
+						<option value="P">Pessoal</option>
+						<option value="S">Subempreiteira</option>
+						<option value="M">Fornecimento de Material</option>
+						<option value="I">Aluguel de Imóveis</option>
+						<option value="S">Prestação de Serviços</option>
+						<option value="A">Arrendamento</option>
+						<option value="F">Freteiro</option>
+					</select>
+				</p>
+				<p>
+					<label>Fornecedor</label>
+					<select name="fonecedor" id="listaFornecedores">
+						<option value="0" selected="selected"></option>
+					</select>
+				</p>
+				<p>
+					<label>Objeto do Contrato</label>
+					<input type="text" value="" maxlength="2048" name="objeto"/>
+				</p>
+				<p>
+					<label>Tipo Período</label>
+					<select name="tipoPeriodo">
+						<option value="0" selected="selected">Selecione</option>
+						<option value="M">Meses</option>
+						<option value="D">Dias</option>
+					</select>
+				</p>
+				<p>
+					<label>Prazo</label>
+					<input type="number" min="0" max="999" name="prazo"/>
+				</p>
+				<p>
+					<label>Data Início</label>
+					<input type="date" name="dataInicio" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2012-01-01" max="2090-01-01"/>
+				</p>
+				<p>
+					<label>Data Término</label>
+					<input type="date" name="dataTermino" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2012-01-01" max="2090-01-01"/>
+				</p>
+				<p>
+					<label>Valor Global</label>
+					<input type="text" value="" id="valGlobal" name="valorGlobal" style="text-align:right;"/>
+				</p>
+				<p>
+					<button type="button" onclick="salvarContrato()">Salvar</button> &nbsp; <button type="reset">Limpar</button>
+				</p>
+			</form>
+		</fieldset>
+		<script>listarFornecedores();</script>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCadastrados();
+		
+			$('#valGlobal').mask('000.000.000,00', {reverse: true});
+			
+		</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>		
+	</body>
+</html>

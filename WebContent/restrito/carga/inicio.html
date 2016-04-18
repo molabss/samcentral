@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>
+		<script type="text/javascript" src="js/inicio.js"></script>
+	</head>
+	<body>
+		<h1>SAM - Sistema de Apropriação Mobile</h1>
+		
+		<h2>## Carga inicial na base de dados da obra ##</h2>
+		
+		<h3>Siga a ordem de cadastro abaixo:</h3>
+		<ol>
+			<li><a href="cadastro_de_fornecedores.html">Cadastro de Fornecedores</a></li>
+			<li><a href="cadastro_de_equipamentos.html">Cadastrar Equipamentos</a></li>
+			<li><a href="cadastro_de_pessoal.html">Cadastrar Pessoal</a></li>
+			<li><a href="cadastro_de_contratos.html">Cadastrar Contratos</a></li>
+			<li><a href="cadastro_dos_itens_de_contrato_de_equipamento.html">Cadastrar Ítens de Contrato de Equipamentos</a></li>
+			<li><a href="cadastro_de_alocacao_de_equipamentos_em_contrato.html">Cadastrar Alocação de Equipamentos em Contrato</a></li>
+			<li><a href="cadastro_de_alocacao_de_pessoal_em_contrato.html">Cadastrar Alocação de Pessoal em Contrato</a></li>
+			<li><a href="cadastro_de_postos_de_abastecimento.html">Cadastrar Postos de Abastecimento</a></li>
+			<li><a href="cadastro_de_combustiveis_em_posto.html">Cadastrar Combustíveis e Lubrificantes nos Postos</a></li>
+		</ol>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="finalizaCarga();">Finalizar Carga</button>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center; margin-bottom:0px;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>
+		<script type="text/javascript">
+			function finalizaCarga(){
+				if(confirm("Finalizar a carga irá suspender seu acesso a este sistema.\nTem certeza?")){
+					var path = '../../ws/restrito/carga/finalizar';
+					ajxRequestStd({returnType:"json", async:false, timeout:10000, method:"PUT", url:path}, 
+						function(response){
+							alert(response.serverMessageUser);
+							if(response.redirect){
+								alert("Sua sessão expirou...");
+								window.location.href = response.redirectTo;
+							}
+						}
+					);					
+			    }
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

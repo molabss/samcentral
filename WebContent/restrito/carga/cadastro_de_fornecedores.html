@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro de Fornecedores</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+			
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}			
+			
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>	
+		<script type="text/javascript" src="js/cadastro_de_fornecedores.js"></script>		
+	</head>
+	<body>
+		<h1>Cadastro de Fornecedores</h1>
+		<fieldset>
+			<form id="frmFornecedor">
+				<p>
+					<label>CNPJ</label>
+					<input type="text" maxlength="18" name="cnpj"/>
+				</p>
+				<p>
+					<label>Razão Social</label>
+					<input type="text" maxlength="128" name="razao"/>
+				</p>
+				<p>
+					<label>Nome Fantasia</label>
+					<input type="text" maxlength="32" name="fantasia"/>
+				</p>
+				<p>
+					<label>Endereço</label>
+					<input type="text" maxlength="128" name="endereco"/>
+				</p>
+				<p>
+					<label>Inscrição Estadual</label>
+					<input type="text" maxlength="18" name="incricaoEst"/>
+					
+				</p>
+				<p>
+					<label>Contatos</label>
+					<input type="text"  maxlength="64" name="contatos"/>
+				</p>
+				<p>
+					<label>Indicação</label>
+					<input type="text"  maxlength="64" name="indicacao"/>
+
+				</p>
+				<p>
+					<label>Responsável Legal</label>
+					<input type="text"  maxlength="40" name="responsavelLegal"/>
+				</p>
+				<p>
+					<label>Responsável Técnico</label>
+					<input type="text"  maxlength="40" name="responsavelTecnico"/>
+				</p>
+				<p>
+					<button type="button" onclick="salvarFornecedor()">Salvar</button> &nbsp; <button type="reset">Limpar</button>
+				</p>
+			</form>
+		</fieldset>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCadastrados();</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" >Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>			
+	</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no"/>
+		<title>Alocação de Equipamentos em Contrato</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+			
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}			
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>		
+		<script type="text/javascript" src="js/cadastro_de_alocacao_de_equipamentos_em_contrato.js"></script>
+	</head>
+	<body>
+		<h1>Cadastro de Alocação de Equipamentos em Contrato</h1>
+		<fieldset>
+			<form id="frmAlocacaoEquipamento">
+					<p>
+						<label>Número Contrato</label>
+						<select name="numero" id="listaContrato" onchange="listarCategoriasEquipamento()">
+							<option value="" selected="selected">Selecione</option>
+						</select>
+					</p>
+					<p>
+						<label>Categoria</label>
+						<select name="categoria" id="listaCategoriaEquipamento" onchange="listarEquipamentosPorCategoria()">
+							<option value="" selected="selected">Selecione</option>
+						</select>
+					</p>
+					<p>
+						<label>Prefixo/ Equipamento</label>
+						<select name="equipamento" id="listaEquipamento">
+							<option value="">Selecione</option>
+						</select>
+					</p>
+					<p>
+						<label>Data Ingresso</label>
+						<input type="date" name="dataIngresso" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2012-01-01" max="2090-01-01"/>
+					</p>
+					<p>
+						<label>KM de Etrada</label>
+						<input type="number" min="0" max="9999999" name="kmEntrada"/>
+					</p>
+					<p>
+						<label>Horímetro de Entrada</label>
+						<input type="number" min="0" max="9999999" name="horimetroEntrada"/>
+					</p>
+					<p>
+						<label>NF de Entrada</label>
+						<input type="text" maxlength="20" name="nfEntrada"/>
+					</p>
+					<p>
+						<label>Tipo de Medição</label>
+						<select name="tipoMedicao">
+							<option value="" selected="selected">Selecione</option>
+							<option value="M">M</option>
+							<option value="P">P</option>
+						</select>					
+					</p>
+					<p>
+						<label>Realiza Manutenção</label>
+						<select name="realizaManutencao">
+							<option value="" selected="selected">Selecione</option>
+							<option value="S">Sim</option>
+							<option value="N">Não</option>
+						</select>					
+					</p>				
+					<p>
+						<label>Tipo Controle Consumo</label>
+						<select name="tipoControleConsumo">
+							<option value="" selected="selected">Selecione</option>
+							<option value="H">Hora</option>
+							<option value="K">Kilômetro</option>
+						</select>					
+					</p>				
+					<p>
+						<button type="button" onclick="salvarAlocacao()">Salvar</button> <button type="reset">Limpar</button>
+					</p>
+	
+				</form>
+		</fieldset>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarContratos();listarCadastrados();</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>			
+	</body>
+</html>

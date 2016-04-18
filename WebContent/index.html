@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>SAM - Carga Login</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<style>
+			body,html {
+				font-family: "Calibri", Times, serif;width: 100%;
+			}
+			label{
+				color: #FFFFFF;
+			    text-align: left;
+			}
+			input{
+			  display: inline-block;
+			  width: 220px;
+			}
+			
+			label{
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 100px;
+			    text-align: left;
+			}
+			
+			.back{
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+10,000000+36,b5001b+100 */
+				background: #000000; /* Old browsers */
+				background: -moz-linear-gradient(-45deg,  #000000 10%, #000000 36%, #b5001b 100%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(-45deg,  #000000 10%,#000000 36%,#b5001b 100%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(135deg,  #000000 10%,#000000 36%,#b5001b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#b5001b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+				
+				padding-left:50px;width:400px;height:200px;position:absolute;top:50%;left:38%;margin-top:-110px;margin-left:-50px;
+				
+			}
+			
+			.logo{
+			
+				width:450px;height:150px;position:absolute;top:30%;left:38%;margin-top:-110px;margin-left:-50px;
+			}
+			
+		</style>
+		<script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="lib/util.js"></script>
+	</head>
+	<body>
+	
+	
+		<div class="logo">
+			<img src="img/logo_sam.fw.png" width="450px;">
+		</div>	
+	
+		<div class="back">
+			<form>
+				<p>
+					<label>Usuário</label>
+					<input type="text" name="login">
+				</p>
+				<p>
+					<label>Senha</label>
+					<input type="password" name="senha">
+				</p>
+				<br/>
+				<p style="text-align: right; padding-right: 80px;">
+					<button type="button" id="btnEntrar">Entrar</button>
+					<button type="reset">Limpar</button>
+				</p>
+				<div style="color:#FFFFFF;text-align: right;margin-right: 10px;margin-top: 35px;">Versão 1.2.0</div>
+			</form>
+		</div>
+		
+		<footer style="position: absolute;bottom: 0px; text-align: center;width: 99%;">
+			<hr>
+		  	<p>
+		  		SAM Central - Carga de Dados
+		  	</p>
+		  	<p>
+			  	Sistema de Apropriações Mobile
+		  	</p>
+		  	<p>
+		  		2015 - Constran Tecnologia da Informação <a href="mailto:ti.matriz@constran.com.br">
+			  	ti.matriz@constran.com.br</a>.
+		  	</p>
+		</footer>
+		
+		<script>
+			$("#btnEntrar").click(function(){
+				var data = $("form").serialize();
+				ajxRequestStd({returnType:"json", async:false, timeout:10000, method:"POST", url:"ws/restrito/carga/autenticar",param:data}, 
+					function(response){
+						window.location.href = response.serverMessageUser
+					}
+				);
+			});
+		</script>
+	</body>
+</html>

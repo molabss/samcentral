@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro de Equipamentos</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+		
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}			
+			
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>			
+		<script type="text/javascript" src="js/cadastro_de_equipamentos.js"></script>		
+	</head>
+	<body>
+
+	<h1>Cadastro de Equipamentos</h1>
+		<fieldset> 
+		<form id="frmEquipamento">
+	
+			
+			<label>Prefixo</label>
+			<input type="text" maxlength="20" name="prefixo">
+			
+			<p>
+				<label>Descrição</label>
+				<input type="text" maxlength="128" name="descricao" >
+			</p>
+			<p>
+				<label>Categoria</label>
+				<select name="categoria" id="listaCategorias" style="width: 300px;">
+						<option value="0" selected="selected" >Selecione</option>
+				</select>		
+			</p>
+			<p>
+				<label>Fornecedor</label>
+				<select name="fornecedor" id="listaFornecedores">
+					<option value="0" selected="selected">Selecione</option>
+				</select>			
+			</p>
+			<p>
+			<label>Tipo</label>
+				<select name="tipo">
+				    <option value="0" selected="selected">Selecione</option>
+					<option value="P">Próprio</option>
+					<option value="T">Terceiro</option>
+				</select>		
+			</p>
+			<p>
+				<label>Unidade de Medida</label>
+				<select name="unidadeMedida">
+					<option value="0" selected="selected">Selecione</option>
+					<option value="dmt">Distância Média de Transporte</option>
+					<option value="h">Hora</option>
+					<option value="kg">Kilo</option>
+					<option value="L">Litros</option>
+					<option value="m">Metros</option>
+					<option value="m²">Metros Quadrados</option>
+					<option value="m³">Metros Cúbicos</option>
+					<option value="t">Toneladas</option>
+					<option value="um">Unitário</option>
+				</select>		
+			</p>
+			<p>
+				<label>Chassi/ Série</label>
+				<input type="text"  maxlength="40" name="chassi">
+			</p>
+			<p>
+				<label>Placa</label>
+				<input type="text" value="" maxlength="20" name="placa">
+			</p>
+			<p>
+				<label>Fabricante</label>
+				<select name="fabricante" id="listaFabricante">
+				</select>
+			</p>
+			<p>
+				<label>Ano</label>
+				<input type="number" min="1901" max="2099" name="ano">
+			</p>
+			<p>
+				<label>Controle Lubrificação</label>
+				<select name="controleLubrificacao">
+					<option value="0" selected="selected" >Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>		
+			</p>
+			<p>
+				<label>QR Code</label>
+				<input type="number" min="500" max="99999999" name="qrCode">
+			</p>
+			<p>
+				<button type="button" onclick="salvarEquipamento()">Salvar</button>
+				<button type="reset">Limpar</button>
+			</p>
+		</form>
+	</fieldset>
+	
+<!-- 		<h1>Cadastro de Equipamentos</h1>
+			<fieldset style="width:45%;">                          
+				<form id="frmEquipamento">
+					<table>
+							<tr>
+								<td><label>Prefixo</label></td>
+								<td><input type="text" maxlength="20" name="prefixo"></td>
+							</tr>
+							
+					<tr>
+						<td><label>Descrição</label></td>
+						<td><input type="text" maxlength="128" name="descricao"></td>
+					</tr>
+					<tr>
+						<td><label>Categoria</label></td>
+						<td>
+						<select name="categoria" id="listaCategorias">
+								<option value="-1" selected="selected" >Selecione</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Fornecedor</label></td>
+						<td>
+							CARREGAR VIA AJAX A LISTA DE FORNECEDORES CADASTRADOS!
+						<select name="fornecedor" id="listaFornecedores">
+								<option value="-1">Selecione</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Tipo</label></td>
+						<td>
+						<select name="tipo">
+							    <option value="-1" selected="selected">Selecione</option>
+								<option value="P">Próprio</option>
+								<option value="T">Terceiro</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Unidade de Medida</label></td>
+						<td>
+						<select name="unidadeMedida">
+								<option value="-1" selected="selected">Selecione</option>
+								<option value="dmt">Distância Média de Transporte</option>
+								<option value="h">Hora</option>
+								<option value="kg">Kilo</option>
+								<option value="L">Litros</option>
+								<option value="m">Metros</option>
+								<option value="m²">Metros Quadrados</option>
+								<option value="m³">Metros Cúbicos</option>
+								<option value="t">Toneladas</option>
+								<option value="um">Unitário</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Chassi/ Série</label></td>
+						<td><input type="text"  maxlength="40" name="chassi"></td>
+					</tr>
+					<tr>
+						<td><label>Placa</label></td>
+						<td><input type="text" value="" maxlength="20" name="placa"></td>
+					</tr>
+					<tr>
+						<td><label>Fabricante</label></td>
+						<td>
+						<select name="fabricante" id="listaFabricante">
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<td><label>Ano</label></td>
+						 <td><input type="text" name="ano" id="an"></td> 
+					</tr>
+	
+					<tr>
+						<td><label>Controle Lubrificação</label></td>
+						<td>
+							<select name="controleLubrificacao">
+								<option value="-1" selected="selected" >Selecione</option>
+								<option value="S">Sim</option>
+								<option value="N">Não</option>
+							</select>
+						</td>
+					</tr>				
+					
+					<tr>
+						<td><label>QR Code</label></td>
+						<td><input type="number" min="0" max="999999999" name="qrCode"></td>
+					</tr>					
+					
+					<tr>
+						<td> &nbsp; </td>
+					</tr>							
+							
+							<tr>
+								<td></td>
+								<td>
+									<button type="button" onclick="salvarEquipamento()">Salvar</button> 
+									&nbsp; 
+									<button type="reset">Limpar</button>
+								</td>
+							</tr>
+					</table>			
+				</form>
+			</fieldset>
+		<script>listarFornecedores();listarCategorias();listarFabricantes();</script> -->
+		<script>listarFornecedores();listarCategorias();listarFabricantes();</script>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCadastrados();</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>				
+	</body>
+</html>

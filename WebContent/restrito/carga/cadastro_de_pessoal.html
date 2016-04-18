@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro de Pessoal</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+			label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}
+		
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>	
+		<script type="text/javascript" src="js/cadastro_de_pessoal.js"></script>		
+	</head>
+	<body>
+		<h1>Cadastro de Pessoal</h1>
+		<fieldset>
+			<form id="frmPessoal">
+				<p>
+					<label>Origem</label>
+					<select name="origem">
+						<option value="0" selected="selected">Selecione</option>
+						<option value="C">Constran</option>
+						<option value="T">Terceiro</option>
+					</select>
+				</p>
+				<p>
+					<label>Nome</label>
+					<input type="text" maxlength="127" name="nome" pattern="[a-z\s]+$">
+				</p>
+				<p>
+					<label>Matrícula</label>
+					<input type="text" maxlength="10" name="matricula">
+				</p>
+				<p>
+					<label>Senha</label>
+					<input type="text" value="" maxlength="6" name="senha"/>
+				</p>
+				<p>
+					<label>Data Nascimento</label>
+					<input type="date" value="" name="dataNascimento" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2012-01-01" max="2090-01-01"/>
+				</p>
+				<p>
+					<label>Sexo</label>
+					<select name="sexo">
+						<option value="0" selected="selected">Selecione</option>
+						<option value="M">Masculino</option>
+						<option value="F">Feminino</option>
+					</select>					
+				</p>				
+				<p>
+					<label>RG</label>
+					<input type="text" value="" maxlength="12" name="rg"/>
+				</p>
+				<p>
+					<label>CPF</label>
+					<input type="text" value="" maxlength="12" name="cpf"/>
+				</p>
+				<p>
+					<label>QR CODE</label>
+					<input type="number" value="" max="99999999" name="qrCode"/>
+				</p>
+				<p>
+					<button type="button" onclick="salvarPessoa()">Salvar</button> &nbsp; <button type="reset">Limpar</button>
+				</p>
+			</form>
+		</fieldset>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCadastrados();</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>					
+	</body>
+</html>

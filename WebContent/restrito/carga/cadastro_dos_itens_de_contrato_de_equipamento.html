@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Cadastro dos Itens de Contrato de Equipamento</title>
+		<style>
+			body {font-family: "Calibri", Times, serif;}
+						label{
+
+			    display: inline-block;
+			    float: left;
+			    clear: left;
+			    width: 150px;
+			    text-align: left;
+			}
+			input {
+			  display: inline-block;
+			}
+		</style>
+		<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="../../lib/util.js"></script>
+		<script type="text/javascript" src="../../lib/logoff.js"></script>	
+		<script type="text/javascript" src="../../lib/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="js/cadastro_dos_itens_de_contrato_de_equipamento.js"></script>		
+	</head>
+	<body>
+		<h1>Cadastro dos Ítens de Contrato de Equipamento</h1>
+		<fieldset>
+				<form id="frmItemEqpmContrato">
+						<p>
+							<label>Número Contrato</label>
+							<select name="numero" id="listaContratos">
+								<option value=""></option>
+							</select>
+						</p>
+						<p>
+							<label>Categoria</label>
+							<select name="categoria" id="listaCategorias">
+							</select>
+						</p>
+						<p>
+							<label>Quantidade</label>
+							<input type="number" min="0" max="99" name="quantidade" value="0"/>
+						</p>
+						<p>
+							<label>Valor Mensal</label>
+							<input type="text" value="" name="valorMensal" id="valMensal" value="0,00"/>
+						</p>
+						<p>
+							<label>Valor Hora Normal</label>
+							<input type="text" value="" name="valorHoraNormal" id="valHoraNormal" value="0,00"/>
+						</p>
+						<p>
+							<label>Valor Hora Extra</label>
+							<input type="text" value="" name="valorHoraExtra" id="valHoraExtra" value="0,00"/>
+						</p>
+						<p>
+							<label>Horas Mínimas</label>
+							<input type="number" min="0" max="24" name="horaMinima" value="0"/>
+						</p>
+						<p>
+							<label>Fornece Operador</label>
+							<select name="foneceOperador">
+								<option value="0" selected="selected">Selecione</option>
+								<option value="S">Sim</option>
+								<option value="N">Não</option>
+							</select>					
+						</p>
+						<p>
+							<button type="button" onclick="salvarItem()">Salvar</button> &nbsp; <button type="reset">Limpar</button>
+						</p>
+				</form>
+		</fieldset>
+		<script>listarContratos();listarCategorias();</script>
+		<br/><br/>
+		<fieldset id="listaCadastrados">
+		</fieldset>
+		<script>listarCadastrados();
+			$('#valMensal').mask('000.000.000,00', {reverse: true}).val("0,00");
+			$('#valHoraNormal').mask('000.000.000,00', {reverse: true}).val("0,00");
+			$('#valHoraExtra').mask('000.000.000,00', {reverse: true}).val("0,00");
+
+		</script>
+		<div id="erroMsg"></div>
+		<div style="position: absolute;top:0;right: 0;margin-right: 15px;">
+		  <p>
+		  	<button type="button" onclick="window.history.back();">Voltar</button>
+		  	<span>&nbsp; &nbsp;</span>
+		  	<button type="button" onclick="logoff();">Logoff</button>
+		  </p>
+		</div>
+		<br/><br/>
+		<footer style="text-align: center;">
+			<hr>
+			<p>2015 - Constran - Tecnologia da Informação</p>
+		</footer>	
+	</body>
+</html>
